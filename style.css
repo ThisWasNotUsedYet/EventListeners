@@ -1,0 +1,113 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(#8cd1cb,#5c4aab);
+
+}
+.CreateEventFont{
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+}
+h1{
+font-weight: 900;}
+
+.Breadcrumbs{
+    margin: 0%;
+    border-style: none;
+    padding: 0.25rem;
+}
+.displayUnder{
+    display: flex;
+    flex-direction: column;
+}
+.displayBeside{
+    display:flex;
+    flex-direction: row;
+}
+.displayBesidebutWrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+#EventCreationSteps{
+    margin-top: 12vh;
+    margin-left: 30vh;
+
+}
+#BasicInfo{
+    display: none;
+}
+.mainDivPosition{
+    margin-top: 3vh;
+    margin-left: 30vh;
+}
+.border{
+    border-radius: 0.5rem;
+    border-color: rgb(68, 3, 3);
+    border-style: double;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+.inputbox{
+    margin-right: auto;
+    padding: 0.125rem;
+    width: max-content;  
+}
+.boxes{/*radiobuttons and check boxes*/
+    padding: 0.125rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: auto;
+}
+
+.uploadImage{
+    color: darkgray;
+    font-size: 1000%;
+}
+
+#imgicon{
+    font-size: 200%;
+    text-align: justify;
+    margin:auto
+}
+.next{
+    padding : 0.5rem;
+    text-align: center;
+    background-color: aqua;
+    margin: 1rem;
+    box-shadow: #a9a0d1;
+    
+}
+progress{
+    margin-top: 2rem;
+    margin-right: 1rem;
+
+}
+.Next{
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+    text-shadow: green;
+}
+.stepsButton{
+    text-align: center;
+    color: darkblue;
+    background-color: #8cd1cb;
+    text-shadow: #5c4aab;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.emailinputbox{
+    width: 50%;
+    
+}
+
+
+
+#EventCreationSteps.border{
+    width: fit-content;
+    border-style: solid;
+    border-color: aqua;
+
+}
