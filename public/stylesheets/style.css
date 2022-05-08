@@ -53,7 +53,7 @@ font-weight: 900;}
 .inputbox{
     margin-right: auto;
     padding: 0.125rem;
-    width: max-content;  
+    width: max-content;
 }
 .boxes{/*radiobuttons and check boxes*/
     padding: 0.125rem;
@@ -78,7 +78,7 @@ font-weight: 900;}
     background-color: aqua;
     margin: 1rem;
     box-shadow: #a9a0d1;
-    
+
 }
 progress{
     margin-top: 2rem;
@@ -100,7 +100,7 @@ progress{
 }
 .emailinputbox{
     width: 50%;
-    
+
 }
 
 

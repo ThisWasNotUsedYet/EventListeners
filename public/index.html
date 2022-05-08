@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang = "en">
-    
+
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Listeners</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono" rel="stylesheet">
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia&effect=fire" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0e8f615cc.js" crossorigin="anonymous"></script>
+    <script src="javascripts/vue.js" defer></script>
 </head>
 <body>
     <div id="EventCreationSteps" class="displayBeside border">
@@ -33,6 +34,7 @@
                 <option>Conference/Corporate</option>
                 <option>Career Fair</option>
                 <option>Lecture</option>
+                
                 <option>Get together</option>
                 <option>Health/Doctor's Appointment</option>
                 <option>Date</option>
@@ -40,7 +42,7 @@
                 <option>Interview</option>
                 <option>Wedding</option>
                 <option>Others</option>
-            </select > 
+            </select >
             <input type="number" placeholder="number of attendees" name = "attendees" class="border inputbox" min="1">
         </div>
 
@@ -59,9 +61,9 @@
                 <label for = "in-person">In-person</label><br>
                 <input type="checkbox" name="Undecided" id="undecided" value = "Undecided">
                 <label for = "Undecided">Not yet decided</label><br>
-                
+
             </div>
-            
+
         </div>
 
 
@@ -77,9 +79,9 @@
                 <button class = "next" > <span id = "Next">Next &#62 </span> </button>
             </div>
         </div>
-    
-        
-        
+
+
+
 <!--Organiser Details-->
 <div id = "Organiser Details" class="CreateEventFont mainDivPosition">
     <h1>Organiser Details:</h1>
