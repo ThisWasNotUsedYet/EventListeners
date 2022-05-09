@@ -11,105 +11,191 @@
     <link href="https://fonts.googleapis.com/css2?family=Sofia&effect=fire" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d0e8f615cc.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="javascripts/vue.js" defer></script>
+    
+
+
+    
+    
 </head>
 <body>
-    <div id="EventCreationSteps" class="displayBeside border">
-        <button class="Breadcrumbs stepsButton" id = "first">Basic Description</button>
-        <button class="Breadcrumbs stepsButton" id = "second">Organiser Details</button>
-        <button class="Breadcrumbs stepsButton" id = "third">Date and Time</button>
-        <button class = "Breadcrumbs stepsButton" id = "fourth">Preview</button>
+<div id = "leftPart" >
+        <h1><i>Creating a New Event</i></h1>
+        <button class = "border">Home Page</button>
+        <button class = "border">Events</button>
+        <button class = "border">Profile</button>
+        <button class = "border">Settings</button>
+</div>
+
+<div id = "app" class = "mainDivPosition">
+    
+    <div id = "EventCreationSteps" class="displayBeside border" >
+        <button v-for = "(item, index) in createPageNavItems"   class="Breadcrumbs stepsButton"   @click="displayMe(index)">{{item.name}} </button>     
     </div>
-    <div id = "BasicInfo" class = "CreateEventFont mainDivPosition displayUnder">
+    <div id = "BasicInfo" class = "CreateEventFont" v-if = "first" >
         <h1>Basic Description</h1>
         <hr>
         <textarea id = "EventDescription" name="EventDescription"
-        rows="5" cols="50"
-        placeholder="Describe within 100 words key points about the events" class = "border" required></textarea>
+        rows="5" cols="55"
+        placeholder="Describe within 100 words key points about the events" class = "border" v-model = "Description" required></textarea>
         <!--use vue.js to make sure it is in the bounds of our 100 words else print maximum limit exceeded -->
         <br><br>
-        <div class="displayBeside">
-            <select name="Type of Event" id="EventCategory" class = "border left inputbox" required>
-                <option disabled selected>Type of Event</option>
-                <option>Conference/Corporate</option>
-                <option>Career Fair</option>
-                <option>Lecture</option>
-                
-                <option>Get together</option>
-                <option>Health/Doctor's Appointment</option>
-                <option>Date</option>
-                <option>Shopping</option>
-                <option>Interview</option>
-                <option>Wedding</option>
-                <option>Others</option>
-            </select >
-            <input type="number" placeholder="number of attendees" name = "attendees" class="border inputbox" min="1">
-        </div>
+        
+        <select name="Type of Event" id="EventCategory" class = "border left inputbox" v-model = "selected" placeholder = "Category" required>
+            <option disabled selected>Type of Event</option>
+            <option>Conference/Corporate</option>
+            <option>Career Fair</option>
+            <option>Lecture</option>
+            
+            <option>Get together</option>
+            <option>Health</option>
+            <option>Date</option>
+            <option>Shopping</option>
+            <option>Interview</option>
+            <option>Wedding</option>
+            <option>Others</option>
+        </select >
+        <input type="number" placeholder="number of attendees" name = "attendees" class="border inputbox" min="1" v-model = "numberOfattendees">
+
 
         <!--radiobuttons-->
-        <div class="displayBeside">
+        <div>
             <div id="radiobuttons" class="boxes left">
-                <input type="radio" value="Private" name = "EventVisiblity" id = "private">
+                <input type="radio" value="Private" name = "EventVisiblity" id = "private" v-model = "privateOrpublic">
                 <label for = "private">Private</label><br>
-                <input type="radio" value="Public" name = "EventVisiblity" id = "public">
+                <input type="radio" value="Public" name = "EventVisiblity" id = "public" v-model = "privateOrpublic">
                 <label for = "public">Public</label>
             </div>
             <div class = "boxes left">
-                <input type="checkbox" name="Online" id="online" value = "Online" >
+                <input type="checkbox" name="Online" id="online" value = "Online" v-model = "checked" >
                 <label for = "online">Online</label><br>
-                <input type="checkbox" name="In-person" id="in-person" value = "In-person">
+                <input type="checkbox" name="In-person" id="in-person" value = "In-person" v-model = "checked">
                 <label for = "in-person">In-person</label><br>
-                <input type="checkbox" name="Undecided" id="undecided" value = "Undecided">
+                <input type="checkbox" name="Undecided" id="undecided" value = "Undecided" v-model = "checked">
                 <label for = "Undecided">Not yet decided</label><br>
 
             </div>
 
         </div>
+        <br><br>
 
 
         <!--icon to upload the image-->
-        <div class="border displayBeside">
+        <div id = "image_box" class="border left boxUploadImage">
             <i class="fa-solid fa-cloud-arrow-up left uploadImage"></i>
             <i class="fa-solid fa-image left" id = "imgicon" >
-                <span >Upload an image for the Event</span>
+                <input id= "upload_img" type = "file" accept="image/png image/jpg" onchange="readURL(event)">
+                <br>
+                
             </i>
         </div>
-            <div class="right">
-                <progress value="5" max="100"></progress>
-                <button class = "next" > <span id = "Next">Next &#62 </span> </button>
-            </div>
+        <div class="right">
+            <progress value="5" max="100"></progress>
+            <button class = "next" @click = "displayMe(1)"> <span class = "Next">Next &#62 </span> </button>
+        </div>
+        <br>
+        
+    </div>
+<!--Organiser Details-->
+    <div id = "Organiser Details" class="CreateEventFont" v-if="second">
+        <h1>Organiser Details:</h1>
+        <hr>
+        <select class="inputbox border">
+            <option value="Title" selected disabled>Title</option>
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Dr.">Mr.</option>
+            <option value="Mr.">Miss</option>
+            <option value="Mr.">Not important</option>
+        </select>
+        <h3>Name: </h3>
+        <input type="text" placeholder="First Name" class="inputbox border" v-model = "FirstName">
+        <input type="text" placeholder="Last Name" class="inputbox border" v-model = "LastName">
+        <h3>Contact:</h3>
+        <input type="email" name="Email" placeholder="email@gmail.com" class="inputbox border emailinputbox" v-model = "Email">
+        <br>
+        <br>
+        <br>
+        <h3>Are there more than 1 organisers ? </h3>
+        <p>Send them this <em>link</em> to register them as organisers</p>
+        <div class="right">
+            <progress value="25" max="100"></progress>
+            <button class = "next" @click = "displayMe(0)"> <span class = "Next">&#60 Back</span> </button>
+            <button class = "next" @click = "displayMe(2)"> <span class = "Next">Next &#62 </span> </button>
+        </div>
+    </div>
+
+<!--Date and time-->
+    <div id = "Date and time" v-if="third" class="CreateEventFont">
+        <h1>Date/Time and Location:</h1>
+        <hr>
+        <div class="datetimepicker">
+            <label for = "EventDate">Date:</label>
+            <input id = "calendar" type="date" name="EventDate" class = "right inputbox border" @click="setMinDate" v-model = "EventDate" >
+        </div>
+        <br>
+        <div class="datetimepicker">
+            <label for = "StartTime">StartTime:</label>
+            <input type="time" name="Start Time" class = "right inputbox border" v-model = "StartTime">  
+        </div>
+        <br>
+        <div class="datetimepicker">
+            <label for = "EndTime">EndTime:</label>
+            <input type="time" name= "EndTime" class = "right inputbox border" v-model="EndTime" >  
+        </div>
+        <h1>Location: </h1>
+        <hr>
+        <a target="blank" href="https://www.google.com/maps">Click here to find the address on GoogleMaps</a>
+        <br>
+        <input type = "text" placeholder="Address1" class="inputbox border" v-model = "address.Address1">
+        <br>
+        <input type = "text" placeholder="CITY" class="inputbox border" v-model = "address.city">
+        <br>
+        <input type = "text" placeholder="STATE" class="inputbox border" v-model = "address.state">
+        <br>
+        <input type = "text" placeholder="COUNTRY" class="inputbox border" v-model = "address.country">
+        <br>
+        <input type = "text" placeholder="POSTCODE" class="inputbox border" v-model = "address.postcode">
+        <br>
+        
+
+
+        <div class="right">
+            <progress value="50" max="100"></progress>
+            <button class = "next" @click = "displayMe(1)"> <span class = "Next">&#60 Back</span> </button>
+            <button class = "next" @click = "displayMe(3)"> <span class = "Next">Next &#62 </span> </button>
+        </div>
+        
+        
+        
+    </div>
+
+    <div id = "Preview" v-if = "fourth">
+        <h1 class="CreateEventFont">Preview: </h1>
+        <ul class="space4word">
+            <li><strong>Type of Event:    </strong> {{selected}}</li>
+            <li><strong>Expected number of attendees:    </strong> {{numberOfattendees}}</li>
+            <li><strong>Private/Public:    </strong> {{privateOrpublic}}</li>
+            <li><strong>Online/In-person:    </strong><ul><li v-for = "checkedName in checked" >{{checkedName}}</li></ul></li>
+            <li><strong>Full Name:    </strong> {{FirstName}} {{LastName}}</li>
+            <li><strong>Contact details:    </strong> {{Email}}</li>
+            <li><strong>Date:    </strong> {{EventDate}}</li>
+            <li><strong>Time:    </strong> Starting at {{StartTime}} & Finishing at {{EndTime}}</li>
+            <li><strong>Event Location:    </strong> {{address.Address1}} {{address.city}} {{address.state}} {{address.country}} {{address.postcode}}</li>
+
+        </ul>
+        <div class="right">
+            <progress value="100" max="100"></progress>
+            <button class = "next" @click = "displayMe(2)"> <span class = "Next">&#60 Back</span> </button>
+            <button type="submit" class = "next"> <span class = "Next">Create Event</span> </button>
         </div>
 
-
-
-<!--Organiser Details-->
-<div id = "Organiser Details" class="CreateEventFont mainDivPosition">
-    <h1>Organiser Details:</h1>
-    <hr>
-    <select class="inputbox border">
-        <option value="Title" selected disabled>Title</option>
-        <option value="Mr.">Mr.</option>
-        <option value="Mrs.">Mrs.</option>
-        <option value="Dr.">Mr.</option>
-        <option value="Mr.">Miss</option>
-        <option value="Mr.">Not important</option>
-    </select>
-    <h3>Name: </h3>
-    <input type="text" placeholder="First Name" class="inputbox border" >
-    <input type="text" placeholder="Last Name" class="inputbox border">
-    <h3>Contact:</h3>
-    <input type="email" name="Email" placeholder="email@gmail.com" class="inputbox border emailinputbox">
-    <br>
-    <br>
-    <br>
-    <h3>Are there more than 1 organisers ? </h3>
-    <p>Send them this <em>link</em> to register them as organisers</p>
-    <div class="right">
-        <progress value="25" max="100"></progress>
-        <button class = "next" > <span class = "Next">&#60 Back</span> </button>
-        <button class = "next" > <span class = "Next">Next &#62 </span> </button>
     </div>
+
+
 </div>
 
 </body>
 </html>
+<!--AIzaSyB0bqzk4MJCee0RbdRNBra3JYz-mWoTjIk-->

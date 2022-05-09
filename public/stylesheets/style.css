@@ -1,8 +1,32 @@
 body{
+    margin: 0;
+    padding: 0;
     height: 100vh;
     background-image: linear-gradient(#8cd1cb,#5c4aab);
-
+    box-sizing: border-box;
 }
+#map{
+    height: 200px;
+    width: 400px;
+}
+#leftPart{
+    margin: 0;
+    width: 40vh;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    background-image: url('/favicon.ico');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:bottom;
+    font-family: 'Sofia';  
+}
+#leftPart .border{
+ width: 100%;
+ padding: 1rem;
+ background-color: transparent;
+}
+
 .CreateEventFont{
     font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
 }
@@ -14,6 +38,7 @@ font-weight: 900;}
     border-style: none;
     padding: 0.25rem;
 }
+
 .displayUnder{
     display: flex;
     flex-direction: column;
@@ -26,23 +51,19 @@ font-weight: 900;}
     display: flex;
     flex-wrap: wrap;
 }
-#EventCreationSteps{
-    margin-top: 12vh;
-    margin-left: 30vh;
 
-}
-#BasicInfo{
-    display: none;
-}
 .mainDivPosition{
     margin-top: 3vh;
-    margin-left: 30vh;
+    margin-left: 60vh;
+    max-width: 100vh;
 }
 .border{
     border-radius: 0.5rem;
     border-color: rgb(68, 3, 3);
     border-style: double;
 }
+
+
 .left{
     float: left;
 }
@@ -51,7 +72,7 @@ font-weight: 900;}
 }
 
 .inputbox{
-    margin-right: auto;
+    margin-right: 9rem;
     padding: 0.125rem;
     width: max-content;
 }
@@ -59,18 +80,18 @@ font-weight: 900;}
     padding: 0.125rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    margin-right: auto;
+    margin-right: 10rem;
 }
 
 .uploadImage{
     color: darkgray;
-    font-size: 1000%;
+    font-size: 500%;
 }
 
 #imgicon{
-    font-size: 200%;
-    text-align: justify;
-    margin:auto
+    font-size: 100%;
+    text-align: center;
+    margin:auto;
 }
 .next{
     padding : 0.5rem;
@@ -102,6 +123,17 @@ progress{
     width: 50%;
 
 }
+.datetimepicker{
+    margin-bottom: 2rem;
+    max-width: 75%;
+}
+.boxUploadImage{
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
 
 
 
@@ -110,4 +142,9 @@ progress{
     border-style: solid;
     border-color: aqua;
 
+}
+
+.space4word{
+    line-height: 1.3rem;
+    white-space: pre;
 }
